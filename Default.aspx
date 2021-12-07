@@ -13,17 +13,19 @@
             <a href="#"><div>Fashion</div></a>
             <a href="#"><div>Mobile</div></a>
         </div>
-        <asp:ListView runat="server" ItemType="SimpleCart.Product" SelectMethod="GetProducts">
-            <ItemTemplate>
-                <div>
-                    <a>
-                        <img src="<%#:Item.ImageUrl %>"/><br />
-                        <%#:Item.Title %> $<%#:Item.Price %><br />
-                        <button>Add to Cart</button>
-                    </a>
-                </div>
-            </ItemTemplate>
-        </asp:ListView>
+        <div class="col-md-8">
+            <asp:ListView runat="server" ItemType="SimpleCart.Product" SelectMethod="GetProducts">
+                <ItemTemplate>
+                    <div>
+                        <a>
+                            <img src="<%#:Item.ImageUrl %>"/><br />
+                            <%#:Item.Title %> $<%#:Item.Price %><br />
+                            <button>Add to Cart</button>
+                        </a>
+                    </div>
+                </ItemTemplate>
+            </asp:ListView>
+        </div>
     </div>
 
 </asp:Content>
