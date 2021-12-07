@@ -13,7 +13,7 @@
             <a href="#"><div>Fashion</div></a>
             <a href="#"><div>Mobile</div></a>
         </div>
-        <asp:ListView runat="server"ItemType="SimpleCart.Product"  SelectMethod="GetProducts">
+        <asp:ListView runat="server" ItemType="SimpleCart.Product" SelectMethod="GetProducts">
             <ItemTemplate>
                 <div>
                     <a>
