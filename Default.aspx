@@ -14,12 +14,12 @@
             <a href="#"><div>Mobile</div></a>
         </div>
         <div class="col-md-8">
-            <asp:ListView runat="server" ItemType="SimpleCart.Product" SelectMethod="GetProducts">
+            <asp:ListView ID="products" runat="server">
                 <ItemTemplate>
                     <div>
                         <a>
-                            <img src="<%#:Item.ImageUrl %>"/><br />
-                            <%#:Item.Title %> $<%#:Item.Price %><br />
+                            <img src="<%# Eval("ImageUrl") %>"/><br />
+                            <%# Eval("Title") %> $<%# Eval("Price") %><br />
                             <button>Add to Cart</button>
                         </a>
                     </div>
