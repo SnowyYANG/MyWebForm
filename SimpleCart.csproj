@@ -106,11 +106,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="App_Data\dbo.Product.sql" />
-    <Content Include="App_Data\SimpleCart.mdf" />
-    <Content Include="App_Data\SimpleCart_log.ldf">
-      <DependentUpon>SimpleCart.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Data\Products.sql" />
+    <Content Include="App_Data\Users.sql" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

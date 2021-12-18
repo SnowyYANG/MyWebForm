@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace SimpleCart
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={HttpRuntime.AppDomainAppPath}App_Data\SimpleCart.mdf;Integrated Security=True"))
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["db"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand("SELECT * FROM Products", con))
             using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
             {
