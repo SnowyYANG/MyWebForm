@@ -1,7 +1,24 @@
-﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="My.aspx.cs" Inherits="SimpleCart.About" %>
+﻿<%@ Page Title="My" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="My.aspx.cs" Inherits="SimpleCart.My" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="db" Height="50px" Width="125px">
+   <br />
+    <br />
+    <asp:Label ID="Label2" runat="server" Text="User Name"></asp:Label>
+    <asp:TextBox ID="txtUserName" runat="server"></asp:TextBox>
+      <asp:Label ID="Label3" runat="server" Text="Address"></asp:Label>
+    <asp:TextBox ID="txtAddress" runat="server"></asp:TextBox><br />
+     <asp:Label ID="Label6" runat="server" Text="Mobile"></asp:Label>
+    <asp:TextBox ID="txtMobile" runat="server"></asp:TextBox>
+      <asp:Label ID="Label4" runat="server" Text="Email"></asp:Label>
+    <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+      <asp:Label ID="Label5" runat="server" Text="Password"></asp:Label>
+    <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+
+    <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+    <br /><br />
+
+    <asp:GridView ID="_gridUser" runat="server"></asp:GridView>
+<%--    <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="db" Height="50px" Width="125px">
         <Fields>
             <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
             <asp:TemplateField HeaderText="Password" SortExpression="Password">
@@ -9,7 +26,7 @@
                     <asp:TextBox ID="TextBox1" runat="server" TextMode="Password" Text='<%# Bind("Password") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" TextMode="Password" Text='<%# Bind("Password") %>' ></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" TextMode="Password" Text='<%# Bind("Password") %>'></asp:TextBox>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='******'></asp:Label>
@@ -29,5 +46,5 @@
             <asp:Parameter Name="Address" />
             <asp:Parameter Name="Mobile" />
         </UpdateParameters>
-    </asp:SqlDataSource>
+    </asp:SqlDataSource>--%>
 </asp:Content>
