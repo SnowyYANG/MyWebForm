@@ -21,7 +21,7 @@
             <asp:CommandField ButtonType="Button" ShowEditButton="true" />
         </Fields>
     </asp:DetailsView>
-    <asp:SqlDataSource ID="db" runat="server" ConnectionString="<%$ ConnectionStrings:db %>" SelectCommand="SELECT TOP 1 [Email], [Password], [Name], [Address], [Mobile] FROM [Users]" UpdateCommand="UPDATE [Users] SET [Email]=@Email, [Password]=@Password, [Name]=@Name, [Address]=@Address, [Mobile]=@Mobile">
+    <asp:SqlDataSource ID="db" runat="server" ConnectionString="<%$ ConnectionStrings:db %>" SelectCommand="SELECT TOP 1 [Email], [Password], [Name], [Address], [Mobile] FROM [Users]" UpdateCommand="UPDATE TOP(1) [Users] SET [Email]=@Email, [Password]=@Password, [Name]=@Name, [Address]=@Address, [Mobile]=@Mobile">
         <UpdateParameters>
             <asp:Parameter Name="Email" />
             <asp:Parameter Name="Password" />
