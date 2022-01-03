@@ -12,7 +12,7 @@
       <asp:Label ID="Label4" runat="server" Text="Email"></asp:Label>
     <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
       <asp:Label ID="Label5" runat="server" Text="Password"></asp:Label>
-    <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
 
     <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
     <br /><br />

@@ -17,12 +17,19 @@ namespace SimpleCart
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetUserData();
+            var table = GetUserData();
+            if (table != null)
+            {
+                txtUserName.Text = table.Rows[0]["Name"].ToString();
+                txtEmail.Text = table.Rows[0]["Email"].ToString();
+                txtAddress.Text = table.Rows[0]["Address"].ToString();
+                txtMobile.Text = table.Rows[0]["Mobile"].ToString();
+            }
         }
 
-        private void GetUserData()
+        private DataTable GetUserData()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["_myCartConnection"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -33,16 +40,11 @@ namespace SimpleCart
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
 
-                if (ds.Tables.Count > 0)
-                {
-                  
-                    adp.Fill(ds);
-                    _gridUser.DataSource = ds;
-                    _gridUser.DataBind();
-                }
-
+                adp.Fill(ds);
+                _gridUser.DataSource = ds;
+                _gridUser.DataBind();
+                return ds.Tables[0];
             }
-
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
