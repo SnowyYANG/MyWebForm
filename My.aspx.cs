@@ -35,7 +35,6 @@ namespace SimpleCart
                 connection.Open();
 
                 //Pass password
-                var encriptedPassword = GetDecryptedString(txtPassword.Text);
                 SqlCommand cmd = new SqlCommand("select * from users", connection);
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
@@ -51,7 +50,6 @@ namespace SimpleCart
             string connectionString = ConfigurationManager.ConnectionStrings["_myCartConnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
 
                 //Pass password
                 var encriptedPassword = GetEncryptedString(txtPassword.Text);
@@ -61,6 +59,7 @@ namespace SimpleCart
                 cmd.Parameters.AddWithValue("@_name", txtUserName.Text);
                 cmd.Parameters.AddWithValue("@_address", txtAddress.Text);
                 cmd.Parameters.AddWithValue("@_mobile", txtMobile.Text);
+                connection.Open();
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 //Display Save records
@@ -69,7 +68,7 @@ namespace SimpleCart
         }
 
         // This function generate encripted password
-        public string GetEncryptedString(string textToEncrypt)
+        public static string GetEncryptedString(string textToEncrypt)
         {
             string EncryptionKey = "SIMPLECARTT00991";
             byte[] clearBytes = Encoding.Unicode.GetBytes(textToEncrypt);
@@ -90,7 +89,7 @@ namespace SimpleCart
             }
             return textToEncrypt;
         }
-        public string GetDecryptedString(string encryptedText)
+        public static string GetDecryptedString(string encryptedText)
         {
             string EncryptionKey = "SIMPLECARTT00991";
             encryptedText = encryptedText.Replace(" ", "+");
