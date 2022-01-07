@@ -17,14 +17,26 @@ namespace SimpleCart
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var table = GetUserData();
-            if (table != null)
-            {
-                txtUserName.Text = table.Rows[0]["Name"].ToString();
-                txtEmail.Text = table.Rows[0]["Email"].ToString();
-                txtAddress.Text = table.Rows[0]["Address"].ToString();
-                txtMobile.Text = table.Rows[0]["Mobile"].ToString();
-            }
+            //************To add new user these code should be commented because it's take records from user table
+            //and fill email all textbox. to add new entry textbox must be empty...
+
+
+
+
+            //var table = GetUserData();
+            //if (table != null)
+            //{
+            //    txtUserName.Text = table.Rows[0]["Name"].ToString();
+            //    txtEmail.Text = table.Rows[0]["Email"].ToString();
+            //    txtAddress.Text = table.Rows[0]["Address"].ToString();
+            //    txtMobile.Text = table.Rows[0]["Mobile"].ToString();
+            //}
+
+
+
+            //******call following function on page load to display already exist records of User table in asp.net Gridview
+
+            GetUserData();
         }
 
         private DataTable GetUserData()
@@ -40,14 +52,41 @@ namespace SimpleCart
                 DataSet ds = new DataSet();
 
                 adp.Fill(ds);
-                _gridUser.DataSource = ds;
+
+                //Display Decripted password in Gridview....................
+
+
+                //Declare datatable with user defined columns and fill(by foreach loop) from already filled dataset table of User
+
+                DataTable _dt = new DataTable();
+                _dt.Columns.Add("UserId");
+                _dt.Columns.Add("UserEmail");
+                _dt.Columns.Add("EncriptedPassword");
+                _dt.Columns.Add("DecriptedPassword");
+                _dt.Columns.Add("UserName");
+                _dt.Columns.Add("UserAddress");
+                _dt.Columns.Add("UserMobile");
+                foreach (DataRow drRow in ds.Tables[0].Rows)
+                {
+                    DataRow dr = _dt.NewRow();
+                    dr["UserId"] = Convert.ToInt32(drRow["Id"].ToString());
+                    dr["UserEmail"] = drRow["Email"].ToString();
+                    dr["EncriptedPassword"] = drRow["Password"].ToString();
+                    dr["DecriptedPassword"] = My.GetDecryptedString(drRow["Password"].ToString());
+                    dr["UserName"] = drRow["Name"].ToString();
+                    dr["UserAddress"] = drRow["Address"].ToString();
+                    dr["UserMobile"] = drRow["Mobile"].ToString();
+                    _dt.Rows.Add(dr);
+
+                }
+                _gridUser.DataSource = _dt;
                 _gridUser.DataBind();
-                return ds.Tables[0];
+                return _dt;
             }
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["_myCartConnection"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
