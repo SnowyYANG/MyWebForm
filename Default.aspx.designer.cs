@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SimpleCart
-{
-
-
-    public partial class _Default
-    {
-
+namespace SimpleCart {
+    
+    
+    public partial class _Default {
+        
         /// <summary>
         /// products control.
         /// </summary>
@@ -21,6 +19,6 @@ namespace SimpleCart
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView products;
+        protected global::System.Web.UI.WebControls.DataList products;
     }
 }

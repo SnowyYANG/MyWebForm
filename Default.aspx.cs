@@ -15,7 +15,7 @@ namespace SimpleCart
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["db"].ConnectionString))
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["_myCartConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand("SELECT * FROM Products", con))
             using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
             {
