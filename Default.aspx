@@ -32,7 +32,7 @@
                 </ItemTemplate>
             </asp:ListView>--%>
                <asp:DataList ID="products" CssClass="table" runat="server" BorderColor="Black" CellPadding="4"
-                CellSpacing="100"
+                CellSpacing="100" 
                 DataKeyField="ID" RepeatColumns="4"
                 RepeatDirection="Horizontal" Font-Bold="False" Font-Italic="False"
                 Font-Overline="False" Font-Strikeout="False" Font-Underline="False">
