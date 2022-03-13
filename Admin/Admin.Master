@@ -1,0 +1,98 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="SimpleCart.Admin.Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - My Shopping Application </title>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+      <script src="../Scripts/js/jquery.min.js"></script>
+    <script src="../Scripts/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        /* Remove the navbar's default rounded borders and increase the bottom margin */
+        .navbar {
+            margin-bottom: 50px;
+            border-radius: 0;
+        }
+
+        .navbar-inverse {
+            background-color: #c6d031 !important;
+        }
+
+            .navbar-inverse .navbar-nav > li > a {
+                color: #000000 !important;
+            }
+
+            .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
+                color: #fff;
+                background-color: #e76843 !important;
+            }
+        /* Remove the jumbotron's default bottom margin */
+        .jumbotron {
+            margin-bottom: 0;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <%--        <div class="jumbotron">
+            <div class="container text-center">
+                <h1>Online Store</h1>
+                <p>Mission, Vission & Values</p>
+            </div>
+        </div>--%>
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <%--<a class="navbar-brand" href="#">Logo</a>--%>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li id="liHome"><a href="Home.aspx">Home</a></li>
+                        <li id="liAddCategory"><a href="AddCategory.aspx">Add Category</a></li>
+                        <li id="liAddProduct"><a href="AddProduct.aspx">Add Products</a></li>
+                        <li id="liRoleManagement"><a href="RoleManagement.aspx">Roles Management</a></li>
+                        <%--<li><a href="#">Contact us</a></li>--%>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Welcome:
+                            <asp:Label ID="lblName" runat="server"></asp:Label></a></li>
+                        <li><a href="../logout.aspx">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <hr />
+        <footer class="container-fluid text-center">
+            <%--            <p>Online Store Copyright</p>
+            <form class="form-inline">
+                Get deals:
+    <input type="email" class="form-control" size="50" placeholder="Email Address">
+                <button type="button" class="btn btn-danger">Sign Up</button>
+            </form>--%>
+        </footer>
+    </form>
+</body>
+</html>

@@ -1,0 +1,105 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site_New.master.cs" Inherits="SimpleCart.Site_New" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .jumbotron {
+            margin-bottom: 0px !important;
+            padding-top: 0px !important;
+        }
+
+        .navbar-inverse {
+            background-color: #807e7e !important;
+        }
+
+            .navbar-inverse .navbar-nav > li > a {
+                color: #000000 !important;
+            }
+
+            .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
+                color: #fff;
+                background-color: #e76843 !important;
+            }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="jumbotron" style="background: #e7cb06;">
+            <div class="container text-center">
+                <h1>Online Store</h1>
+                <p>Mission, Vission & Values</p>
+            </div>
+        </div>
+                <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <%--<a class="navbar-brand" href="#">Logo</a>--%>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li id="homeId"><a href="Default.aspx">Home</a></li>
+                        <li id="productId"><a href="Products.aspx">Products</a></li>
+                        <%if (objLogin != null)
+                            {%>
+                        <%if (objLogin.LoginUserId > 0 && objLogin.Role == "User")
+                            {%>
+                        <li id="myCartId"><a href="MyCart.aspx">MyCart</a></li>
+                        <% } %>
+
+                        <% }%>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <%if (objLogin != null)
+                            {%>
+                        <%if (objLogin.LoginUserId > 0 && objLogin.Role == "User")
+                            {%>
+                         <li><a href="#">Welcome:
+                            <asp:Label ID="lblName" runat="server"></asp:Label></a></li>
+                        <li><a href="MyCart.aspx"><span class="glyphicon glyphicon-shopping-cart"></span>
+                            <asp:Label runat="server" ID="lblCartCount" ForeColor="Red"></asp:Label>
+                            </a></li>
+                        <li><a href="../logout.aspx">Logout</a></li>
+                        <% } %>
+                          <%else
+                            {%>
+
+                        <li><a href="Login.aspx"><span class="glyphicon glyphicon-user"></span>Sign in</a></li>
+                        <% }%>
+
+                        <% }%>
+                        <%else
+                            {%>
+
+                        <li><a href="Login.aspx"><span class="glyphicon glyphicon-user"></span>Sign in</a></li>
+                        <% }%>
+
+                      
+                    </ul>
+                </div>
+            </div>
+        </nav>
+       <div class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+           <hr />
+        <footer class="container-fluid text-center">
+            <p>Online Store Copyright © 2021 All Rights Reserved</p>
+
+        </footer>
+    </form>
+</body>
+</html>
